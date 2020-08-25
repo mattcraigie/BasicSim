@@ -1,20 +1,33 @@
-.. BasicSim documentation master file, created by
-   sphinx-quickstart on Tue Aug 25 17:44:02 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
 
-Welcome to BasicSim's documentation!
+
+BasicSim
 ====================================
 
-.. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+#.. toctree::
+#   :maxdepth: 2
 
 
+Installation
+------------
+BasicSim is most easily used by cloning the github repository at https://github.com/mattcraigie/BasicSim.
 
-Indices and tables
-==================
+BasicSim has the following dependencies::
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+    numpy
+    matplotlib
+    ffmpeg
+
+To install these quickly, activate your python environment, navigate to the BasicSim directory and use::
+
+    pip install -r requirements.txt
+
+FFMpeg must also be installed (https://ffmpeg.org/). You may need to specify the FFMpeg install location, you will need
+to add the lines.
+
+To install these quickly, activate your python environment, navigate to the BasicSim directory and use::
+
+    import matplotlib as mpl
+    mpl.rcParams['animation.ffmpeg_path'] = r'path\\to\\FFMpeg\\bin\\ffmpeg.exe'
+
+before running any BasicSim functions.
+

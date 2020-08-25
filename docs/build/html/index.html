@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Welcome to BasicSim’s documentation! &#8212; BasicSim 1.0 documentation</title>
+    <title>BasicSim &#8212; BasicSim 1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -31,18 +31,32 @@
 
           <div class="body" role="main">
             
-  <div class="section" id="welcome-to-basicsim-s-documentation">
-<h1>Welcome to BasicSim’s documentation!<a class="headerlink" href="#welcome-to-basicsim-s-documentation" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
+  <div class="section" id="basicsim">
+<h1>BasicSim<a class="headerlink" href="#basicsim" title="Permalink to this headline">¶</a></h1>
+<p>#.. toctree::
+#   :maxdepth: 2</p>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<p>BasicSim is most easily used by cloning the github repository at <a class="reference external" href="https://github.com/mattcraigie/BasicSim">https://github.com/mattcraigie/BasicSim</a>.</p>
+<p>BasicSim has the following dependencies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">numpy</span>
+<span class="n">matplotlib</span>
+<span class="n">ffmpeg</span>
+</pre></div>
 </div>
+<p>To install these quickly, activate your python environment, navigate to the BasicSim directory and use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
-</ul>
+<p>FFMpeg must also be installed (<a class="reference external" href="https://ffmpeg.org/">https://ffmpeg.org/</a>). You may need to specify the FFMpeg install location, you will need
+to add the lines.</p>
+<p>To install these quickly, activate your python environment, navigate to the BasicSim directory and use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;animation.ffmpeg_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;path</span><span class="se">\\</span><span class="s1">to</span><span class="se">\\</span><span class="s1">FFMpeg</span><span class="se">\\</span><span class="s1">bin</span><span class="se">\\</span><span class="s1">ffmpeg.exe&#39;</span>
+</pre></div>
+</div>
+<p>before running any BasicSim functions.</p>
+</div>
 </div>
 
 
