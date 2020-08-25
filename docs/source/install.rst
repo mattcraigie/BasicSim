@@ -4,7 +4,7 @@ Installation
 
 The most straightforward way to use BasicSim is:
 
-1. Clone the github repository at https://github.com/mattcraigie/BasicSim using your favourite IDE or using
+1. Clone the github repository at https://github.com/mattcraigie/BasicSim using your favourite IDE or using::
 
     git clone https://github.com/mattcraigie/BasicSim
 
@@ -13,19 +13,21 @@ The most straightforward way to use BasicSim is:
 
     pip install -r requirements.txt
 
-4. Install FFMpeg locally (https://ffmpeg.org/)
-5. Create a script or run python interactively, and import the simulation module using
+4. Install FFMpeg on your machine (https://ffmpeg.org/)
+5. You're good to go! Create a script or run python interactively, and import the simulation module using
 
-    import simulation
+.. code-block:: python
 
-6. The main function may then be used (with default setup) as
+   import simulation
+   simulation.run_sim_pm(filename)
 
-    simulation.run_sim_pm(filename)
 
-You may need to specify the FFMpeg install location by adding the lines
+You may also need to specify the FFMpeg install location by adding the lines
 
-    import matplotlib as mpl
-    mpl.rcParams['animation.ffmpeg_path'] = r'path\\to\\FFMpeg\\bin\\ffmpeg.exe'
+.. code-block:: python
+
+   import matplotlib as mpl
+   mpl.rcParams['animation.ffmpeg_path'] = r'path\\to\\FFMpeg\\bin\\ffmpeg.exe'
 
 before running any BasicSim functions.
 
