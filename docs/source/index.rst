@@ -9,12 +9,11 @@ Contents
 
 .. toctree::
    :maxdepth: 2
+
    index
    contents
-   simulation
-   document
-   modules
-
+   simfuncs
+   documentation
 
 
 Indices and tables
