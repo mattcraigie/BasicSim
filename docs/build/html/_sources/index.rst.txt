@@ -18,6 +18,8 @@ throughout the simulation. To maintain the calculation speed, the resulting powe
 quick and dirty again using FFTs. Changing to more precise pairwise methods requires O(N^2) making calculations far
 less practical for the large number of particles intended to be used with BasicSim.
 
+Check out the different sections of this documentation for help:
+
 .. toctree::
    :maxdepth: 2
 
