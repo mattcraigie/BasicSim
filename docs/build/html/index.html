@@ -36,7 +36,7 @@
     
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Contents" href="contents.html" /> 
+    <link rel="next" title="Running a Simulation" href="simfuncs.html" /> 
 </head>
 
 <body class="wy-body-for-nav">
@@ -81,19 +81,9 @@
               
             
             
-              <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">BasicSim Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="contents.html">Contents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="simfuncs.html">Running a Simulation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="documentation.html">Documentation</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents.html">Contents</a></li>
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="simfuncs.html">Running a Simulation</a></li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Full Documentation</a></li>
 </ul>
 
             
@@ -163,23 +153,28 @@
 <h1>BasicSim Documentation<a class="headerlink" href="#basicsim-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>Here is a brief introduction</p>
+<p>BasicSim is a python package that provides a simple and easy to use N-body simulation for cosmological-scale interactions. It uses a particle-mesh
+technique which allows efficient calculation for large numbers of particles. BasicSim provides one main function that
+calculates gravitational interaction by solving the Poisson equation for gravitational potential and then calculating
+the gradient to provide acceleration. With a preference for simplicity (and allowing me to actually finish it), it
+uses a simple Euler integration method. The Fast Fourier Transform (FFT) technique that underlies the particle-mesh method scales with
+O(N + G log[G]) where N is the number of particles and G is the number of grid points, in contrast with O(N^2) of the
+direct point-point comparison method.</p>
+<p>Additionally, BasicSim provides the means to calculate and plot the power spectrum and correlation function at each step
+throughout the simulation. To maintain the calculation speed, the resulting power spectrum and correlation functions are
+quick and dirty again using FFTs. Changing to more precise pairwise methods requires O(N^2) making calculations far
+less practical for the large number of particles intended to be used with BasicSim.</p>
 <div class="toctree-wrapper compound">
-<ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">BasicSim Documentation</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="contents.html">Contents</a></li>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="simfuncs.html">Running a Simulation</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="simfuncs.html#indices-and-tables">Indices and tables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="simfuncs.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="simfuncs.html#contributing">Contributing</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="documentation.html">Documentation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="documentation.html">Full Documentation</a></li>
 </ul>
 </div>
+<p>If you wish to contribute to BasicSim please raise an issue on the BasicSim <a class="reference external" href="https://github.com/mattcraigie/BasicSim">Github</a>.</p>
 </div>
 </div>
 
@@ -191,7 +186,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="contents.html" class="btn btn-neutral float-right" title="Contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="simfuncs.html" class="btn btn-neutral float-right" title="Running a Simulation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>

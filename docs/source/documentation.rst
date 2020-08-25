@@ -1,5 +1,5 @@
-=============
-Documentation
-=============
+==================
+Full Documentation
+==================
 
-Here's some docs
+Here's some docs and some autodoc action

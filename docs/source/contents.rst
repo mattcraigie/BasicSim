@@ -2,4 +2,10 @@
 Contents
 ================
 
-Here are some contents
+.. toctree::
+   :maxdepth: 2
+
+   index
+   contents
+   simfuncs
+   documentation
