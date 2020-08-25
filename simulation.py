@@ -149,7 +149,7 @@ def greens_function(k_vec):
 ### ~~~ Fast Functions ~~~ ###
 
 
-def power_spectrum_fast(rho, k_norm, n_bins, delta):
+def power_spectrum_fast(rho, k_norm, n_bins):
     bin_edges = np.linspace(np.min(k_norm), np.max(k_norm), n_bins + 1)
     bin_width = bin_edges[1] - bin_edges[0]
     bin_mids = (bin_edges + bin_width)[:-1]
@@ -158,20 +158,6 @@ def power_spectrum_fast(rho, k_norm, n_bins, delta):
 
     F_rvec = G_r #- 1 / alpha * R_r
     F_kvec = rfftn(G_r, axes=(0, 1, 2))
-    #
-    # plt.close()
-    # plt.imshow(np.imag(np.sum(F_kvec, axis=1)))
-    # plt.savefig('fkvec.png')
-    #
-    # exit()
-    # histshow(G_r, 'Ghist')
-    # histshow(R_r, 'Rhist')
-    # histshow(F_rvec, 'Fhist')
-    #
-    # print(G_r)
-    # print(R_r)
-    # print(F_rvec)
-    # exit()
 
     # F_kvec = delta_ft #- alpha * delta_ft_random
     P_kvec = np.real(F_kvec * np.conj(F_kvec))
