@@ -21,7 +21,7 @@ less practical for the large number of particles intended to be used with BasicS
 .. toctree::
    :maxdepth: 2
 
-   installation
+   install
    simfuncs
    documentation
 

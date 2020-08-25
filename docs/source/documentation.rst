@@ -2,4 +2,7 @@
 Full Documentation
 ==================
 
-Here's some docs and some autodoc action
+.. automodule:: simulation
+    :members:
+
+
