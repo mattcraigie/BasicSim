@@ -2,6 +2,5 @@
 Full Documentation
 ==================
 
-.. automodule:: simulation
+.. automodule:: simulation.pm
     :members:
-    :noindex:

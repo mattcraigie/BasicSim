@@ -25,6 +25,7 @@ Check out the different sections of this documentation for help:
 
    install
    simfuncs
+   documentation
    simulation
    modules
 
