@@ -7,7 +7,6 @@ mpl.rcParams['animation.ffmpeg_path'] = r'C:\\Program Files (x86)\\FFMpeg\\bin\\
 
 
 def apply_boundary(p):
-    """Defines the boundary conditions - we want a periodic boundary"""
     p = p % n_grid_cells
     return p
 
@@ -261,6 +260,7 @@ def run_sim_pm(filename, n_particles=100, n_grid=30, n_frames=1000, show_ps=Fals
     simulation
     :param ps_bins: the number of bins to use for the power spectrum and correlation function if show_ps=True
     :return: returns None
+
     """
 
     np.random.seed(42)
