@@ -25,6 +25,8 @@ Check out the different sections of this documentation for help:
 
    install
    simfuncs
-   documentation
+   simulation
+   modules
+
 
 If you wish to contribute to BasicSim please raise an issue on the BasicSim `Github <https://github.com/mattcraigie/BasicSim>`_.
