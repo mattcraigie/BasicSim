@@ -31,3 +31,9 @@ To install these quickly, activate your python environment, navigate to the Basi
 
 before running any BasicSim functions.
 
+
+Contributing
+------------
+
+If you wish to contribute to BasicSim please raise an issue
+via `Github <https://github.com/mattcraigie/BasicSim>`_.
