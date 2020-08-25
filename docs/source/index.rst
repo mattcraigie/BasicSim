@@ -1,10 +1,26 @@
 
-
+========
 BasicSim
-====================================
+========
 
-#.. toctree::
-#   :maxdepth: 2
+--------
+Contents
+--------
+
+.. toctree::
+   :maxdepth: 2
+
+   index
+   simulation
+
+
+------------------
+Indices and tables
+------------------
+
+* :ref:`genindex`
+* :ref:`modindex`
+* :ref:`search`
 
 
 Installation
