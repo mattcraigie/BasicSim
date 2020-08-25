@@ -19,7 +19,7 @@ The most straightforward way to use BasicSim is:
 .. code-block:: python
 
    import simulation
-   simulation.run_sim_pm(filename)
+   simulation.pm.run_sim_pm(filename)
 
 
 You may also need to specify the FFMpeg install location by adding the lines
