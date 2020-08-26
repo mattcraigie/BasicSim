@@ -51,9 +51,11 @@ class SimPM():
         # Set initial positions and velocities
         self.position = n_grid * np.random.random((3, n_particles))
 
+        # for testing the power spectrum
         # x = np.linspace(0, 1, 7)[:-1]
         # self.n_particles = 6 ** 3
         # self.position = np.array([[i, j, k] for i in x for j in x for k in x]).transpose() * (n_grid -1)
+
         self.velocity = 1 * (0.5 - np.random.random((3, self.n_particles)))
 
         # frame counter
@@ -312,11 +314,13 @@ class SimPM():
     def correlation_function_fast(self, k, P):
 
         r = self.n_grid * k / (2 * np.pi)
-        xi = np.zeros(len(r))
+        # xi = np.zeros(len(r))
+        #
+        # for i in range(len(r)):
+        #     integrand = P * np.sin(k * r[i]) * k
+        #     xi[i] = 1 / (2 * np.pi ** 2 * r[i]) * np.trapz(integrand, k)
 
-        for i in range(len(r)):
-            integrand = P * np.sin(k * r[i]) * k
-            xi[i] = 1 / (2 * np.pi ** 2 * r[i]) * np.trapz(integrand, k)
+        xi = np.fft.irfft(P)
 
         return r, xi
 
