@@ -36,11 +36,15 @@ Check out the different sections of this documentation for help:
    :caption: Pages
    :maxdepth: 2
 
-   contents
    install
    simfuncs
    documentation
    modules
+
+.. toctree::
+   :hidden:
+
+   contents
 
 If you wish to contribute to BasicSim please raise an issue on the BasicSim `Github <https://github.com/mattcraigie/BasicSim>`_.
 I would like to acknowledge the assistance of Dragan Huterer's notes on constructing density, as well as a significant contribution
