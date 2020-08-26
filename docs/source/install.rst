@@ -18,8 +18,8 @@ The most straightforward way to use BasicSim is:
 
 .. code-block:: python
 
-   import simulation
-   simulation.pm.run_sim_pm(filename)
+   from simulation.pm import SimPM
+   SimPM('mysim.mp4')
 
 
 You may also need to specify the FFMpeg install location by adding the lines

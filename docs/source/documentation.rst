@@ -2,8 +2,7 @@
 Full Documentation
 ==================
 
-.. automodule:: simulation.pm
-   :members:
-   :noindex:
+.. py:class:: simulation.pm.SimPM(filename)
 
-.. automethod:: simulation.pm.run_sim_pm
+   Return an iterator that yields tuples of an index and an item of the
+   *sequence*. (And so on.)

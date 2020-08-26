@@ -13,6 +13,9 @@ uses a simple Euler integration method. The Fast Fourier Transform (FFT) techniq
 O(N + G log[G]) where N is the number of particles and G is the number of grid points, in contrast with O(N^2) of the
 direct point-point comparison method.
 
+I have chosen to impose a soft acceleration limit to eliminate close-range artifacts, such that any acceleration over a threshold
+is softened to :math:`t+0.1e` where :math:`t` is the threshold and :math:`e` is the excess above this threshold.
+
 Additionally, BasicSim provides the means to calculate and plot the power spectrum and correlation function at each step
 throughout the simulation. To maintain the calculation speed, the resulting power spectrum and correlation functions are
 quick and dirty again using FFTs. Changing to more precise pairwise methods requires O(N^2) making calculations far

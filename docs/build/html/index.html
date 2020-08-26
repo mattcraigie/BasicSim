@@ -30,6 +30,7 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     
     <script type="text/javascript" src="_static/js/theme.js"></script>
 
@@ -163,6 +164,8 @@ the gradient to provide acceleration. With a preference for simplicity (and allo
 uses a simple Euler integration method. The Fast Fourier Transform (FFT) technique that underlies the particle-mesh method scales with
 O(N + G log[G]) where N is the number of particles and G is the number of grid points, in contrast with O(N^2) of the
 direct point-point comparison method.</p>
+<p>I have chosen to impose a soft acceleration limit to eliminate close-range artifacts, such that any acceleration over a threshold
+is softened to <span class="math notranslate nohighlight">\(t+0.1e\)</span> where <span class="math notranslate nohighlight">\(t\)</span> is the threshold and <span class="math notranslate nohighlight">\(e\)</span> is the excess above this threshold.</p>
 <p>Additionally, BasicSim provides the means to calculate and plot the power spectrum and correlation function at each step
 throughout the simulation. To maintain the calculation speed, the resulting power spectrum and correlation functions are
 quick and dirty again using FFTs. Changing to more precise pairwise methods requires O(N^2) making calculations far

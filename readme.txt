@@ -5,7 +5,7 @@ Welcome to BasicSim, the premier software for basic cosmology N-body simulations
 Documentation
 -------------
 
-Documentation and help with getting started is available at www.workingurl.com.
+Documentation and help with getting started is available at https://basicsim.readthedocs.io/
 
 
 ------------
