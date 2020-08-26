@@ -2,7 +2,7 @@
 Full Documentation
 ==================
 
-.. py:class:: simulation.pm.SimPM(filename)
+.. py:class:: simulation.pm.SimPM(filename, filename, n_particles=100, n_grid=30, n_frames=1000, show_ps=False, ps_bins=50)
 
    Creates and runs a simulation using a particle-mesh N-body implementation. An mp4 file of the simulation is saved at
    the location specified by filename. The particle-mesh method scales with O(N + G*log[G]), and operations are done in

@@ -36,7 +36,9 @@ class SimPM():
         self.L_box = 1
         self.H_0 = 1
         self.G = 1
-        self.Omega_m0 = 1
+        self.Omega_m0 = 0.3
+        self.Omega_k0 = 0
+        self.Omega_L0 = 0.7
         self.mass_particle = 1
         self.Omega_0 = 1
 
@@ -52,14 +54,14 @@ class SimPM():
         # x = np.linspace(0, 1, 7)[:-1]
         # self.n_particles = 6 ** 3
         # self.position = np.array([[i, j, k] for i in x for j in x for k in x]).transpose() * (n_grid -1)
-        self.velocity = 0 * (0.5 - np.random.random((3, self.n_particles)))
+        self.velocity = 1 * (0.5 - np.random.random((3, self.n_particles)))
 
         # frame counter
         self.frame = 0
 
         # time steps
-        self.a = 0.1
-        self.da = 1e-2
+        self.a = 0.4
+        self.da = 1e-3
 
         x = np.arange(0, n_grid)
         self.pos_grid = np.array(np.meshgrid(x, x, x))
@@ -81,9 +83,11 @@ class SimPM():
             gs = self.fig.add_gridspec(2, 3)
 
             self.ax1 = self.fig.add_subplot(gs[0:, 0:2])
-            self.ax1.set_title('Main Simulation')
-            self.ax1.set_xlim(0, n_grid)
-            self.ax1.set_ylim(0, n_grid)
+            self.ax1.set_title('Main Simulation [a={}]'.format(self.a))
+            self.ax1.set_xlabel('Normalised Comoving $x$')
+            self.ax1.set_ylabel('Normalised Comoving $y$')
+            self.ax1.set_xlim(0, 1)
+            self.ax1.set_ylim(0, 1)
 
             self.ax2 = self.fig.add_subplot(gs[0, 2])
             self.ax2.set_title('Power Spectrum [$k\\ P(k)$]')
@@ -126,9 +130,12 @@ class SimPM():
 
             # Set the axes on which the points will be shown
             plt.ion()  # Set interactive mode on
-            fig, ax = plt.subplots(figsize=(8, 8))
-            ax.set_xlim(0, self.n_grid)
-            ax.set_ylim(0, self.n_grid)
+            fig, self.ax1 = plt.subplots(figsize=(8, 8))
+            self.ax1.set_title('Main Simulation [a={}]'.format(self.a))
+            self.ax1.set_xlabel('Normalised Comoving $x$')
+            self.ax1.set_ylabel('Normalised Comoving $y$')
+            self.ax1.set_xlim(0, 1)
+            self.ax1.set_ylim(0, 1)
 
             # Create command which will plot the positions of the particles
             self.points_sim, = plt.plot([], [], 'o', markersize=1)
@@ -142,6 +149,9 @@ class SimPM():
                 f = filename
 
             ani.save(filename, writer=writervideo)
+
+    def da_set(self, a):
+        return 0.01
 
     def apply_boundary(self, p):
         p = p % self.n_grid
@@ -175,6 +185,9 @@ class SimPM():
 
         return rho
 
+    def f(self, a):
+        return (a**-1 * self.Omega_m0 * self.Omega_k0 * a + self.Omega_L0 * a**3) ** (-0.5)
+
     def apply_force_pm(self, p, v):
         rho = self.assign_densities(p)
         rhobar = (np.sum(rho) / self.n_grid ** 3)
@@ -184,14 +197,14 @@ class SimPM():
         phi_ft = delta_ft * self.greens_function()
         phi = irfftn(phi_ft, axes=(0, 1, 2))
 
-        g_field_slow = self.get_acceleration_field(phi)
+        g_field = self.get_acceleration_field(phi)
 
-        g_particle = self.assign_accelerations(p, g_field_slow)
+        g_particle = self.assign_accelerations(p, g_field)
 
         g_norm = np.linalg.norm(g_particle, axis=0)
         cond = g_norm > 50
         rhats = g_particle[:, cond] / g_norm[cond]
-        # g_particle[:, cond] = (50 - g_norm[cond]) * 0.1 * rhats + 50 * rhats
+        g_particle[:, cond] = (50 - g_norm[cond]) * 0.1 * rhats + 50 * rhats
 
         if self.show_ps:
 
@@ -215,7 +228,7 @@ class SimPM():
             else:
                 self.ax3.set_ylim([0, np.max(xi) * 1.2])
 
-        v += g_particle * self.da
+        v += self.f(self.a) * g_particle * self.da
 
         return v
 
@@ -267,6 +280,7 @@ class SimPM():
         return g
 
     def greens_function(self):
+        # greens = - G_factor / (self.a * np.linalg.norm(np.sin(self.half_k_grid / 2), axis=0))
         greens = -3 * self.Omega_0 / (8 * self.a * np.linalg.norm(np.sin(self.half_k_grid / 2), axis=0))
         greens[0, 0, 0] = 0
         return greens
@@ -350,14 +364,18 @@ class SimPM():
         except ZeroDivisionError:
             pass
 
-        self.position += self.velocity * self.da
+
+        self.position += self.velocity * self.da * self.f(self.a) / self.a**2
         self.position = self.apply_boundary(self.position)
         self.velocity = self.apply_force_pm(self.position, self.velocity)
 
-        self.points_sim.set_data(self.position[0, :], self.position[1, :])
+        self.points_sim.set_data(self.position[0, :] / self.n_grid, self.position[1, :] / self.n_grid)
 
+        self.da = self.da_set(self.a)
         self.a += self.da
         self.frame += 1
+
+        self.ax1.set_title('Main Simulation [a={:.2f}]'.format(self.a))
 
         return self.points_sim,
 

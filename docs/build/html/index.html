@@ -157,15 +157,24 @@
 <h1>BasicSim Documentation<a class="headerlink" href="#basicsim-documentation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
-<p>BasicSim is a python package that provides a simple and easy to use N-body simulation for cosmological-scale interactions. It uses a particle-mesh
-technique which allows efficient calculation for large numbers of particles. BasicSim provides one main function that
+<p>BasicSim is a python package that provides a simple and easy to use 3D N-body simulation for cosmological-scale interactions. It uses a particle-mesh
+technique which allows efficient calculation for large numbers of particles, allowing users to watch as cosmological strcture grows.
+BasicSim provides one main function that
 calculates gravitational interaction by solving the Poisson equation for gravitational potential and then calculating
 the gradient to provide acceleration. With a preference for simplicity (and allowing me to actually finish it), it
 uses a simple Euler integration method. The Fast Fourier Transform (FFT) technique that underlies the particle-mesh method scales with
 O(N + G log[G]) where N is the number of particles and G is the number of grid points, in contrast with O(N^2) of the
 direct point-point comparison method.</p>
-<p>I have chosen to impose a soft acceleration limit to eliminate close-range artifacts, such that any acceleration over a threshold
-is softened to <span class="math notranslate nohighlight">\(t+0.1e\)</span> where <span class="math notranslate nohighlight">\(t\)</span> is the threshold and <span class="math notranslate nohighlight">\(e\)</span> is the excess above this threshold.</p>
+<p>The particle-mesh technique used in BasicSim is developed from Andrey Kravtsov’s incredibly useful presentation on producing a
+particle-mesh cosmology simulation (available at <a class="reference external" href="https://astro.uchicago.edu/~andrey/talks/PM/pmpotsdam.pdf">https://astro.uchicago.edu/~andrey/talks/PM/pmpotsdam.pdf</a>). It uses
+a system of normalised comoving coordinates for position and velocity, and steps in the scale factor <span class="math notranslate nohighlight">\(a\)</span> as the time step. It produces
+an x-y projection of the 3D space in normalised comoving coordinates <span class="math notranslate nohighlight">\(x\)</span> that may be recovered to a separation <span class="math notranslate nohighlight">\(r\)</span>
+by <span class="math notranslate nohighlight">\(r=a x /r_0\)</span>. To enable BasicSim to run smoothly, it always begins at <span class="math notranslate nohighlight">\(a = 0.4\)</span> and steps forward in steps of
+<span class="math notranslate nohighlight">\(0.001\)</span> per frame. The initial conditions are always a random postion distribution at this time. This is somewhat
+unphysical, but an approximation that must be made for BasicSim. One artifact of the method used (and a major limitation of this code)
+is the treatment of particles at <span class="math notranslate nohighlight">\(a &gt; 1\)</span>. Particles tend to ‘freeze out’ as the separation becomes too far for
+the gravitational field to overcome. As a result, longer simulation times are not recommended (i.e. past about 1000 frames),
+and if you have time to run a large simulation it may be worth favouring higher N for more interesting results.</p>
 <p>Additionally, BasicSim provides the means to calculate and plot the power spectrum and correlation function at each step
 throughout the simulation. To maintain the calculation speed, the resulting power spectrum and correlation functions are
 quick and dirty again using FFTs. Changing to more precise pairwise methods requires O(N^2) making calculations far
@@ -188,7 +197,9 @@ less practical for the large number of particles intended to be used with BasicS
 </li>
 </ul>
 </div>
-<p>If you wish to contribute to BasicSim please raise an issue on the BasicSim <a class="reference external" href="https://github.com/mattcraigie/BasicSim">Github</a>.</p>
+<p>If you wish to contribute to BasicSim please raise an issue on the BasicSim <a class="reference external" href="https://github.com/mattcraigie/BasicSim">Github</a>.
+I would like to acknowledge the assistance of Dragan Huterer’s notes on constructing density, as well as a significant contribution
+from Cullan Howlett in understanding intricacies of particle-mesh and the resulting power spectrum.</p>
 </div>
 </div>
 
