@@ -33,16 +33,6 @@ less practical for the large number of particles intended to be used with BasicS
 Check out the different sections of this documentation for help:
 
 .. toctree::
-   :caption: Pages
-   :maxdepth: 2
-
-   install
-   simfuncs
-   documentation
-   modules
-
-.. toctree::
-   :hidden:
 
    contents
 
