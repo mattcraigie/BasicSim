@@ -1,6 +1,5 @@
 Welcome to BasicSim, the premier software for basic cosmology N-body simulations!
 
-
 -------------
 Documentation
 -------------

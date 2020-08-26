@@ -63,7 +63,7 @@ class SimPM():
 
         # time steps
         self.a = 0.4
-        self.da = 1e-2
+        self.da = 1e-3
 
         x = np.arange(0, n_grid)
         self.pos_grid = np.array(np.meshgrid(x, x, x))
