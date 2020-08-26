@@ -39,3 +39,8 @@ change structure formation.
 
    # For gravity twice as strong
    SimPM('stronggrav.mp4', n_particles=4000, gravity_factor=2)
+
+.. toctree::
+   :hidden:
+
+   contents

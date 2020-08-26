@@ -40,7 +40,7 @@ class SimPM():
         self.Omega_k0 = 0
         self.Omega_L0 = 0.7
         self.mass_particle = 1
-        self.Omega_0 = 1
+        self.Omega_0 = 1 * gravity_factor
 
         self.r_0 = self.L_box / self.n_grid
         self.t_0 = 1 / self.H_0

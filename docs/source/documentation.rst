@@ -17,3 +17,10 @@ Full Documentation
    :param ps_bins: the number of bins to use for the power spectrum and correlation function if show_ps=True
    :param gravity_factor: a scale factor used to increase or decrease the strength of gravity, for experimenting in simulations
    :return: returns None
+
+
+
+.. toctree::
+   :hidden:
+
+   contents
