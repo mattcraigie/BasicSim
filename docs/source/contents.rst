@@ -2,8 +2,10 @@
 Contents
 ================
 
-index
-install
-contents
-simfuncs
-documentation
+.. toctree::
+   :caption: Contents
+   :maxdepth: 2
+
+   install
+   simfuncs
+   documentation

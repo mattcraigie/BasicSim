@@ -23,7 +23,7 @@ class SimPM():
     """
 
 
-    def __init__(self, filename, n_particles=100, n_grid=30, n_frames=1000, show_ps=False, ps_bins=50):
+    def __init__(self, filename, n_particles=100, n_grid=30, n_frames=1000, show_ps=False, ps_bins=50, gravity_factor=1):
 
         self.filename = filename
         self.n_particles = n_particles
@@ -61,7 +61,7 @@ class SimPM():
 
         # time steps
         self.a = 0.4
-        self.da = 1e-3
+        self.da = 1e-2
 
         x = np.arange(0, n_grid)
         self.pos_grid = np.array(np.meshgrid(x, x, x))
@@ -150,8 +150,6 @@ class SimPM():
 
             ani.save(filename, writer=writervideo)
 
-    def da_set(self, a):
-        return 0.01
 
     def apply_boundary(self, p):
         p = p % self.n_grid
@@ -303,7 +301,10 @@ class SimPM():
         things = []
 
         for i in range(n_bins):
-            condition = np.abs(self.half_k_norm - bin_mids[i]) < bin_width / 2
+            for i in range(n_bins):
+                condition = np.where(np.abs(k_norm - bin_mids[i]) < bin_width / 2)
+            print(condition)
+
             if np.sum(condition) != 0:
                 P[i] = np.sum(P_kvec[condition]) / np.sum(condition)
             else:
@@ -371,7 +372,6 @@ class SimPM():
 
         self.points_sim.set_data(self.position[0, :] / self.n_grid, self.position[1, :] / self.n_grid)
 
-        self.da = self.da_set(self.a)
         self.a += self.da
         self.frame += 1
 

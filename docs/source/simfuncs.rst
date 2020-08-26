@@ -25,9 +25,17 @@ For example, you might try
 
 .. code-block:: python
 
-   SimPM('highn.mp4', n_particles=16**3)
+   SimPM('highn.mp4', n_particles=4000)
    SimPM('longtime.mp4', n_particles=100, n_frames=3000)
    SimPM('finergrid.mp4', n_particles=1000, n_grid=50, n_frames=500)
 
 Using BasicSim with these higher number of particles results in structure formation in the simulation, which is
 detectable in the power spectrum and correlation functions.
+
+Another parameter that can be changed is the gravity factor. This scales the strength of gravity, and modifying it will
+change structure formation.
+
+.. code-block:: python
+
+   # For gravity twice as strong
+   SimPM('stronggrav.mp4', n_particles=4000, gravity_factor=2)

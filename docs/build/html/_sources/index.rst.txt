@@ -33,14 +33,14 @@ less practical for the large number of particles intended to be used with BasicS
 Check out the different sections of this documentation for help:
 
 .. toctree::
+   :caption: Pages
    :maxdepth: 2
 
+   contents
    install
    simfuncs
    documentation
-   simulation
    modules
-
 
 If you wish to contribute to BasicSim please raise an issue on the BasicSim `Github <https://github.com/mattcraigie/BasicSim>`_.
 I would like to acknowledge the assistance of Dragan Huterer's notes on constructing density, as well as a significant contribution
