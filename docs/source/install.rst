@@ -31,9 +31,3 @@ You may also need to specify the FFMpeg install location by adding the lines
 
 before running any BasicSim functions.
 
-
-.. toctree::
-   :hidden:
-
-   contents
-

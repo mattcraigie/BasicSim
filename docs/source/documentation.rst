@@ -19,8 +19,3 @@ Full Documentation
    :return: returns None
 
 
-
-.. toctree::
-   :hidden:
-
-   contents

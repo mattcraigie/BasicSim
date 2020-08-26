@@ -303,12 +303,12 @@ class SimPM():
         for i in range(n_bins):
             for i in range(n_bins):
                 condition = np.where(np.abs(k_norm - bin_mids[i]) < bin_width / 2)
-            print(condition)
+                print(condition)
 
-            if np.sum(condition) != 0:
-                P[i] = np.sum(P_kvec[condition]) / np.sum(condition)
-            else:
-                P[i] = 0
+                if np.sum(condition) != 0:
+                    P[i] = np.sum(P_kvec[condition]) / np.sum(condition)
+                else:
+                    P[i] = 0
 
         return bin_mids, P
 
